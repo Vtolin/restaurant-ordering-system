@@ -1,35 +1,63 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import MenuItem from '@/components/MenuItem'
 
-interface MenuItem {
+type Item = {
   id: number
   name: string
   price: number
   description: string
+  image?: string
 }
 
 export default function MenuPage() {
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([])
+  const [menuItems, setMenuItems] = useState<Item[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    setLoading(true)
     fetch('/api/menu')
-      .then(res => res.json())
-      .then(data => setMenuItems(data))
+  .then(res => {
+    if (!res.ok) {
+      throw new Error('Failed to fetch')
+    }
+    return res.json()
+  })
+  .then(response => {
+    console.log('API returned:', response)
+    if(response.success) {
+    setMenuItems(response.data)
+    } else {
+        throw new Error(response.error)
+    }
+    setLoading(false)
+  })
+  .catch(error => {
+    setError(error.message)
+    setLoading(false)
+  })
   }, [])
 
+    if (loading) {
+        return <div className="text-center text-white">Loading menu...</div>
+    }
+    if (error) {
+        return <div className="text-center text-red-500">Error loading menu: {error}</div>
+    }
+    if (menuItems.length === 0) {
+        return <div className="text-center text-white">No menu items available.</div>
+    }
+
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Menu</h1>
-      <ul className="grid gap-4">
+    <main className="min-h-screen bg-[#0e0e0e] text-white px-4 py-8">
+      <h1 className="text-4xl font-serif text-center text-[#d4af37] mb-8">Menu</h1>
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
         {menuItems.map(item => (
-          <li key={item.id} className="border rounded p-4">
-            <h2 className="text-xl font-semibold">{item.name}</h2>
-            <p className="text-gray-600">{item.description}</p>
-            <p className="font-bold mt-2">Rp {item.price.toLocaleString()}</p>
-          </li>
+          <MenuItem key={item.id} {...item} />
         ))}
-      </ul>
+      </div>
     </main>
   )
 }

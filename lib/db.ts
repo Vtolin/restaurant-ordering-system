@@ -21,12 +21,15 @@ export async function testConnection() {
     }
 }
 
-export async function executeQuery(query: string, params: any[] = []) {
+export async function executeQuery<T = any>(
+    query: string, 
+    params: any[] = []
+): Promise<T[]> {
     try {
-        const [results] = await pool.execute(query, params)
-        return results
+        const [rows] = await pool.execute(query, params)
+        return rows as T[]
     } catch (error) {
-        console.error('database query error:', error)
+        console.error('SQL error', error)
         throw error;
     }
 }

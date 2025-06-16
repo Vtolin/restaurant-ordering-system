@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server'
 import { executeQuery } from '@/lib/db'
 
-
-
 export async function GET() {
   try {
     const menuItems = await executeQuery(`

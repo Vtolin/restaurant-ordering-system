@@ -5,6 +5,7 @@ type CartItem = {
     id: number
     name: string
     price: number
+    quantity: number
     image?: string
 }
 
@@ -38,7 +39,7 @@ export function CartProvider({children}: { children: ReactNode }) {
             return [...prev, newItem]
         })
     }
-}
+
 
 function removeFromCart(id: number) {
     setItems(prev => prev.filter(item => item.id !== id))
@@ -53,3 +54,4 @@ return (
         {children} 
     </CartContext.Provider>
 )
+}

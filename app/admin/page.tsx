@@ -5,14 +5,25 @@ export default function AdminPage() {
   const [orders, setOrders] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    fetch('/api/admin/orders')
-    .then(res => res.json())
-    .then(data => {
-      setOrders(data.data)
+useEffect(() => {
+  async function loadOrders() {
+    try {
+      const res = await fetch('/api/admin/orders')
+      if (!res.ok) throw new Error('API error')
+
+      const json = await res.json()
+      setOrders(json.data)
+    } catch (err) {
+      console.error('Failed to load orders:', err)
+      setOrders([]) // Set to empty so UI shows “no orders”
+    } finally {
       setLoading(false)
-    })
-  }, [])
+    }
+  }
+
+  loadOrders()
+}, [])
+
   return (
     <main className="p-6 text-white">
       <h1 className="text-2xl mb-4">Admin Orders</h1>

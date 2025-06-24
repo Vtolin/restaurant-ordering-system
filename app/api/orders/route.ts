@@ -3,7 +3,7 @@ import { executeQuery } from '@/lib/db'
 
 export async function POST(request: NextRequest) {
   try {
-    const { items } = await request.json()
+    const { items, name } = await request.json()
 
     const result = await executeQuery('INSERT INTO orders (created_at) VALUES (NOW())')
     const orderId = (result as any).insertId
@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     for (const item of items) {
       await executeQuery(
         'INSERT INTO order_items (order_id, menu_item_id, quantity) VALUES (?, ?, ?)',
-        [orderId, item.id, item.quantity]
+        [orderId, item.id, item.quantity, name]
       )
     }
 

@@ -5,11 +5,9 @@ export async function POST(request: NextRequest) {
   try {
     const { items } = await request.json()
 
-    // 1. Create a new order row
     const result = await executeQuery('INSERT INTO orders (created_at) VALUES (NOW())')
     const orderId = (result as any).insertId
 
-    // 2. For each cart item, add a row to order_items
     for (const item of items) {
       await executeQuery(
         'INSERT INTO order_items (order_id, menu_item_id, quantity) VALUES (?, ?, ?)',

@@ -13,19 +13,19 @@ export default function CartPage() {
       const res = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items, name }) // ✅ SEND NAME HERE
+        body: JSON.stringify({ items, name })
       })
 
       const result = await res.json()
 
       if (!res.ok) throw new Error(result.error || 'Checkout failed')
 
-      alert('✅ Order placed successfully!')
+      alert('Order placed successfully!')
       clearCart()
       setName('')
     } catch (err: any) {
       console.error('Checkout failed:', err)
-      alert('❌ Checkout failed: ' + err.message)
+      alert('Checkout failed: ' + err.message)
     } finally {
       setLoading(false)
     }
@@ -57,7 +57,7 @@ export default function CartPage() {
             placeholder="Your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-4 w-full px-4 py-2 rounded text-black"
+            className="mt-4 w-full px-4 py-2 rounded text-white bg-[#d4af37]"
           />
 
           <button

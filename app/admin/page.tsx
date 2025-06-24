@@ -15,7 +15,7 @@ useEffect(() => {
       setOrders(json.data)
     } catch (err) {
       console.error('Failed to load orders:', err)
-      setOrders([]) // Set to empty so UI shows “no orders”
+      setOrders([]) 
     } finally {
       setLoading(false)
     }

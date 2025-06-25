@@ -6,21 +6,21 @@ This is a full-stack restaurant ordering system built with **Next.js (App Router
 
 ---
 
-## 🚀 Features
+## Features
 
-### 👨‍🍳 Customer View
+### Customer View
 - View menu items (fetched from MySQL)
 - Add items to cart
 - View order summary
 - Submit order with your name
 
-### 🔐 Admin View
+### Admin View
 - Simple password-protected dashboard
 - View live orders (`pending`)
 - Mark orders as ✅ Served or ❌ Cancelled
 - Automatically hides completed orders
 
-### 🧠 Technical Highlights
+### Technical Highlights
 - Built with **Next.js App Router** (`app/` folder structure)
 - Uses **API Routes** for full backend logic (POST/GET/UPDATE)
 - Pure **MySQL (raw queries)** for hands-on database learning
@@ -30,7 +30,7 @@ This is a full-stack restaurant ordering system built with **Next.js (App Router
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Frontend      | Backend        | Database |
 |---------------|----------------|----------|
@@ -40,7 +40,7 @@ This is a full-stack restaurant ordering system built with **Next.js (App Router
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 
 ```bash
 app/
@@ -151,21 +151,21 @@ Run the app
 npm run dev
 ```
 
-##🙋‍♂️ About Me
+## About Me
 I'm a junior developer learning full-stack development by building real-world projects from scratch. This project helped me understand how databases, backend logic, and frontend interactivity all come together in a real application.
 
-##🧩 Future Improvements (stretch goals)
-✅ Add order filtering (status tabs)
+## Future Improvements (stretch goals)
+Add order filtering (status tabs)
 
-🔐 Use real authentication (NextAuth)
+Use real authentication (NextAuth)
 
-💾 Store admin sessions with cookies
+Store admin sessions with cookies
 
-📈 Add order statistics
+Add order statistics
 
-💬 Live updates with WebSockets or polling
+Live updates with WebSockets or polling
 
-🌐 Deployment (Vercel + Railway or PlanetScale)
+Deployment (Vercel + Railway or PlanetScale)
 
-##📄 License
+## License
 MIT — free to use, fork, and learn from.

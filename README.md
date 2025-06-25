@@ -55,36 +55,24 @@ components/
 ├── AdminPanel.tsx
 lib/
 ├── db.ts         # MySQL connection helper
+```
 
-
-🧪 Local Setup
+## 🧪 Local Setup
 Clone this repo
 
-bash
-Copy
-Edit
 git clone https://github.com/yourusername/restaurant-ordering-app
 cd restaurant-ordering-app
 Install dependencies
 
-bash
-Copy
-Edit
 npm install
 Configure your .env
 
-env
-Copy
-Edit
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=yourpassword
 DB_NAME=restaurant
-Set up MySQL tables
 
-sql
-Copy
-Edit
+Set up MySQL tables
 -- orders table
 CREATE TABLE orders (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -110,9 +98,7 @@ CREATE TABLE menu_items (
   name VARCHAR(255),
   price DECIMAL(10,2)
 );
-Run the app
 
-bash
-Copy
-Edit
+
+Run the app
 npm run dev

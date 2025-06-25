@@ -57,7 +57,7 @@ lib/
 ├── db.ts        
 ```
 
-## 🧪 Local Setup
+## Local Setup
 Clone this repo
 
 ```bash

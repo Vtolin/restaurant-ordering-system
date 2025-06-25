@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server"
 export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
     try {
         const {status} = await request.json()
-        const allowed = ['pending', 'preparing', 'ready', 'served', 'canceled']
+        const allowed = ['pending', 'preparing', 'ready', 'served', 'cancelled']
         if(!allowed.includes(status)) {
             throw new Error('invalid status')
         }

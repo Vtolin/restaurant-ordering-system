@@ -60,19 +60,24 @@ lib/
 ## 🧪 Local Setup
 Clone this repo
 
+```bash
 git clone https://github.com/yourusername/restaurant-ordering-app
 cd restaurant-ordering-app
+```
+
 Install dependencies
-
+```bash
 npm install
+```
 Configure your .env
-
+```bash
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=yourpassword
 DB_NAME=restaurant
-
+```
 Set up MySQL tables
+```bash
 -- orders table
 CREATE TABLE orders (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -98,7 +103,9 @@ CREATE TABLE menu_items (
   name VARCHAR(255),
   price DECIMAL(10,2)
 );
-
+```
 
 Run the app
+```bash
 npm run dev
+```

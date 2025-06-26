@@ -7,7 +7,7 @@ export default function HomePage() {
     <main className="min-h-screen flex items-center justify-center bg-[#0e0e0e] text-[#f8f5f0] px-6">
       <div className="max-w-2xl text-center">
         <h1 className="text-5xl sm:text-6xl font-serif font-bold mb-6 text-[#d4af37] tracking-wide">
-          Busso Ristorante
+          Ristorante
         </h1>
 
         <p className="text-lg sm:text-xl text-[#dcdcdc] mb-10">

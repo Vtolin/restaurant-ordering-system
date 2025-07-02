@@ -1,30 +1,30 @@
 "use client";
 import { useEffect, useState } from "react";
-import AdminLogin from "@/components/AdminLogin";
+import { useSession, signIn } from "next-auth/react";
 
 export default function AdminPage() {
+  const { data: session, status } = useSession();
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    async function loadOrders() {
-      try {
-        const res = await fetch("/api/admin/orders");
-        if (!res.ok) throw new Error("API error");
-
-        const json = await res.json();
-        setOrders(json.data);
-      } catch (err) {
-        console.error("Failed to load orders:", err);
-        setOrders([]);
-      } finally {
-        setLoading(false);
-      }
+    if (session) {
+      loadOrders();
     }
+  }, [session]);
 
-    loadOrders();
-  }, []);
+  async function loadOrders() {
+    try {
+      const res = await fetch("/api/admin/orders");
+      if (!res.ok) throw new Error("API error");
+      const json = await res.json();
+      setOrders(json.data);
+    } catch (err) {
+      console.error("Failed to load orders:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function updateStatus(id: number, newStatus: string) {
     const res = await fetch(`/api/admin/orders/${id}/status`, {
@@ -32,6 +32,7 @@ export default function AdminPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus }),
     });
+
     if (res.ok) {
       setOrders((prev) => prev.filter((o) => o.orderId !== id));
     } else {
@@ -40,13 +41,27 @@ export default function AdminPage() {
     }
   }
 
+  if (status === "loading") return <p>Checking session...</p>;
+  if (!session) {
+    return (
+      <main className="p-6 text-white">
+        <h1 className="text-2xl mb-4">Admin Dashboard</h1>
+        <p>You must be logged in to view this page.</p>
+        <button
+          onClick={() => signIn("github")}
+          className="bg-yellow-400 px-4 py-2 rounded text-black"
+        >
+          Sign in with GitHub
+        </button>
+      </main>
+    );
+  }
+
   return (
     <main className="p-6 text-white">
       <h1 className="text-2xl mb-4">Admin Dashboard</h1>
 
-      {!isLoggedIn ? (
-        <AdminLogin onLogin={() => setIsLoggedIn(true)} />
-      ) : loading ? (
+      {loading ? (
         <p>Loading orders...</p>
       ) : (
         orders.map((order) => (

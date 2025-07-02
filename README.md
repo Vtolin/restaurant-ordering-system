@@ -48,7 +48,7 @@ app/
 ├── cart/         # Shopping cart view
 ├── checkout/     # (Optional) extra checkout screen
 ├── admin/        # Admin dashboard (protected)
-├── api/          # All backend logic (menu, orders)
+├── api/          # All backend logic (menu, orders, etc.)
 components/
 ├── Navbar.tsx
 ├── AdminLogin.tsx
@@ -68,13 +68,18 @@ cd ngodingv1
 Install dependencies
 ```bash
 npm install
+npm install next-auth
 ```
 Configure your .env
 ```bash
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=yourpassword
-DB_NAME=restaurant
+DB_PASSWORD=your_password
+DB_NAME=your_db_name
+GITHUB_ID=your_github_id
+GITHUB_SECRET=your_github_secret
+USERNAME=your_github_username
+EMAIL=incase_you_want_to_use__your_github_email_instead_of_your_github_username
 ```
 Set up MySQL tables
 ```bash
@@ -156,8 +161,6 @@ I'm a junior developer learning full-stack development by building real-world pr
 
 ## Future Improvements (stretch goals)
 Add order filtering (status tabs)
-
-Use real authentication (NextAuth)
 
 Store admin sessions with cookies
 

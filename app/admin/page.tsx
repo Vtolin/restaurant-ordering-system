@@ -80,14 +80,14 @@ export default function AdminPage() {
             </ul>
             <button
               onClick={() => updateStatus(order.orderId, "served")}
-              className="text-green-400 underline"
+              className="text-green-400 underline cursor-pointer mr-[20px]"
             >
               ✅ Mark as Served
             </button>
 
             <button
               onClick={() => updateStatus(order.orderId, "cancelled")}
-              className="text-red-400 underline mr-[20px]"
+              className="text-red-400 underline cursor-pointer"
             >
               ❌ Cancel Order
             </button>

@@ -83,11 +83,11 @@ EMAIL=incase_you_want_to_use__your_github_email_instead_of_your_github_username
 ```
 Set up MySQL tables
 ```bash
--- Create the database
+#Create the database
 CREATE DATABASE restaurant_orders;
 USE restaurant_orders;
 
--- Categories table
+#Categories table
 CREATE TABLE categories (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE categories (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Menu items table
+#Menu items table
 CREATE TABLE menu_items (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(200) NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE menu_items (
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
 
--- Orders table
+#Orders table
 CREATE TABLE orders (
   id INT AUTO_INCREMENT PRIMARY KEY,
   customer_name VARCHAR(100) NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE orders (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Order items table (junction table)
+#Order items table (junction table)
 CREATE TABLE order_items (
   id INT AUTO_INCREMENT PRIMARY KEY,
   order_id INT NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE order_items (
   FOREIGN KEY (menu_item_id) REFERENCES menu_items(id)
 );
 
--- Insert sample categories
+#Insert sample categories(OPTIONAL, THE FEATURE IS NOT HERE YET)
 INSERT INTO categories (name, description) VALUES
 ('Main Course', 'Primary dishes and entrees'),
 ('Pizza', 'Various pizza selections'),
@@ -141,7 +141,7 @@ INSERT INTO categories (name, description) VALUES
 ('Beverages', 'Drinks and refreshments'),
 ('Desserts', 'Sweet treats and desserts');
 
--- Insert sample menu items
+#Insert sample menu items
 INSERT INTO menu_items (name, description, price, category_id, is_available) VALUES
 ('Spaghetti Carbonara', 'Classic creamy pasta with pancetta and egg', 45000.00, 3, TRUE),
 ('Margherita Pizza', 'Fresh basil, mozzarella & tomato sauce', 60000.00, 2, TRUE),

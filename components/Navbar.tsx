@@ -8,7 +8,7 @@ export default function Navbar() {
 
     return (
         <nav className="bg-[#d4af37] text-white flex justify-between items-center px-6 py-4">
-      <Link href="/" className="text-lg font-bold">ROSG</Link>
+      <Link href="/" className="text-lg font-bold">ROSP</Link>
 
       <div className="space-x-6 flex items-center">
         <Link href="/menu" className="hover:underline">Menu</Link>

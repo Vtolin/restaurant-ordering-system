@@ -85,6 +85,7 @@ EMAIL=incase_you_want_to_use__your_github_email_instead_of_your_github_username
 To configure:
 - Set `GITHUB_ID`, `GITHUB_SECRET`, and `NEXTAUTH_SECRET` in `.env.local`
 - Modify the `allowedAdmins` array in `app/api/auth/[...nextauth]/route.ts`
+---
 
 Set up MySQL tables
 ```bash

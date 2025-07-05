@@ -6,6 +6,7 @@ export async function GET() {
          const rows = await executeQuery(`
       SELECT
         o.id AS order_id,
+        o.customer_name,
         o.created_at,
         oi.menu_item_id,
         oi.quantity,
@@ -14,6 +15,7 @@ export async function GET() {
       FROM orders o
       JOIN order_items oi ON o.id = oi.order_id
       JOIN menu_items mi ON oi.menu_item_id = mi.id
+      WHERE o.status NOT IN ('served', 'cancelled')
       ORDER BY o.created_at DESC
     `)
     const orders: Record<number, any> = {}
@@ -22,6 +24,7 @@ export async function GET() {
             orders[row.order_id] = {
                 orderId: row.order_id,
                 createdAt: row.created_at,
+                customerName: row.customer_name,
                 items: []
             }
         }

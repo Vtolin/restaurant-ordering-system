@@ -83,11 +83,11 @@ EMAIL=incase_you_want_to_use__your_github_email_instead_of_your_github_username
 ```
 Set up MySQL tables
 ```bash
-#Create the database
+-- Create the database
 CREATE DATABASE restaurant_orders;
 USE restaurant_orders;
 
-#Categories table
+-- Categories table
 CREATE TABLE categories (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE categories (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-#Menu items table
+-- Menu items table
 CREATE TABLE menu_items (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(200) NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE menu_items (
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
 
-#Orders table
+-- Orders table
 CREATE TABLE orders (
   id INT AUTO_INCREMENT PRIMARY KEY,
   customer_name VARCHAR(100) NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE orders (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-#Order items table (junction table)
+-- Order items table (junction table)
 CREATE TABLE order_items (
   id INT AUTO_INCREMENT PRIMARY KEY,
   order_id INT NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE order_items (
   FOREIGN KEY (menu_item_id) REFERENCES menu_items(id)
 );
 
-#Insert sample categories(OPTIONAL, THE FEATURE IS NOT HERE YET)
+-- Insert sample categories(OPTIONAL, THE FEATURE IS NOT HERE YET)
 INSERT INTO categories (name, description) VALUES
 ('Main Course', 'Primary dishes and entrees'),
 ('Pizza', 'Various pizza selections'),
@@ -141,14 +141,29 @@ INSERT INTO categories (name, description) VALUES
 ('Beverages', 'Drinks and refreshments'),
 ('Desserts', 'Sweet treats and desserts');
 
-#Insert sample menu items
+-- Insert sample menu items
 INSERT INTO menu_items (name, description, price, category_id, is_available) VALUES
 ('Spaghetti Carbonara', 'Classic creamy pasta with pancetta and egg', 45000.00, 3, TRUE),
-('Margherita Pizza', 'Fresh basil, mozzarella & tomato sauce', 60000.00, 2, TRUE),
 ('Beef Rendang', 'Slow-cooked Indonesian beef curry', 85000.00, 1, TRUE),
-('Nasi Goreng Special', 'Indonesian fried rice with chicken and prawns', 35000.00, 1, TRUE),
-('Es Teh Manis', 'Sweet iced tea', 8000.00, 4, TRUE),
-('Tiramisu', 'Classic Italian coffee-flavored dessert', 25000.00, 5, TRUE);
+('Beef Lasagna', 'a classic Italian baked pasta dish', 45000.00, 1, TRUE),
+('Margherita Pizza', 'Fresh basil, mozzarella & tomato sauce', 60000.00, 2, TRUE),
+('Pepperoni Pizza', 'Classic pizza with mozzarella and spicy pepperoni', 65000.00, 2, TRUE),
+('Quattro Formaggi', 'Four-cheese pizza: mozzarella, gorgonzola, parmesan, fontina', 68000.00, 2, TRUE),
+('Vegetarian Pizza', 'Topped with bell peppers, mushrooms, onions, and olives', 58000.00, 2, TRUE),
+('Chicken Parmigiana', 'Breaded chicken breast topped with marinara and mozzarella', 55000.00, 1, TRUE),
+('Fettuccine Alfredo', 'Creamy parmesan sauce over fettuccine pasta', 48000.00, 3, TRUE),
+('Bolognese Pasta', 'Ground beef ragu simmered in tomato sauce', 46000.00, 3, TRUE),
+('Seafood Marinara', 'Pasta with prawns, squid, and mussels in rich marinara sauce', 67000.00, 3, TRUE),
+('Risotto Funghi', 'Creamy mushroom risotto with parmesan', 49000.00, 1, TRUE),
+('Sweet Ice Tea', 'Sweet iced tea', 6000.00, 4, TRUE),
+('Tiramisu', 'Classic Italian coffee-flavored dessert', 25000.00, 5, TRUE),
+('Ice Lemon Tea', 'Sweet iced lemon tea', 12000.00, 4, TRUE),
+('Cappuccino', 'Espresso with steamed milk and foam', 25000.00, 4, TRUE),
+('Italian Soda', 'Sparkling soda with fruit syrup (choose strawberry or blueberry)', 18000.00, 4, TRUE),
+('Mineral Water', 'Chilled bottled mineral water', 5000.00, 4, TRUE),
+('Panna Cotta', 'Italian creamy dessert served with berry sauce', 23000.00, 5, TRUE),
+('Cannoli', 'Pastry filled with sweet ricotta cream and chocolate chips', 24000.00, 5, TRUE),
+('Gelato Trio', 'Three scoops of Italian ice cream (chocolate, vanilla, strawberry)', 27000.00, 5, TRUE);
 ```
 
 Run the app

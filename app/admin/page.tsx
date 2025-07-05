@@ -70,6 +70,9 @@ export default function AdminPage() {
             <p className="text-sm text-zinc-400">
               {new Date(order.createdAt).toLocaleString()}
             </p>
+            <p className="text-sm text-yellow-300 font-semibold mb-2">
+              👤 {order.customerName || "Anon" }
+            </p>
             <ul className="mt-2 space-y-1">
               {order.items.map((item: any, index: number) => (
                 <li key={index} className="text-sm">
@@ -78,6 +81,7 @@ export default function AdminPage() {
                 </li>
               ))}
             </ul>
+            
             <button
               onClick={() => updateStatus(order.orderId, "served")}
               className="text-green-400 underline cursor-pointer mr-[20px]"

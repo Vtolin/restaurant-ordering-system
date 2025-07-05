@@ -26,7 +26,7 @@ This is a full-stack restaurant ordering system built with **Next.js (App Router
 - Pure **MySQL (raw queries)** for hands-on database learning
 - **Enum-based order status** (`pending`, `served`, `cancelled`, etc.)
 - Styled with **Tailwind CSS**
-- Admin login state stored in-memory (no NextAuth yet)
+- Admin access is protected using [NextAuth.js](https://next-auth.js.org/) with GitHub OAuth. Only authorized GitHub accounts (by username) can access the admin dashboard.
 
 ---
 
@@ -36,7 +36,7 @@ This is a full-stack restaurant ordering system built with **Next.js (App Router
 |---------------|----------------|----------|
 | Next.js 14    | Next.js API Routes | MySQL    |
 | React / TSX   | Raw SQL Queries |          |
-| Tailwind CSS  |                |          |
+| Tailwind CSS  | NextAuth        |          |
 
 ---
 
@@ -81,6 +81,11 @@ GITHUB_SECRET=your_github_secret
 USERNAME=your_github_username
 EMAIL=incase_you_want_to_use__your_github_email_instead_of_your_github_username
 ```
+## 🔐 Authentication
+To configure:
+- Set `GITHUB_ID`, `GITHUB_SECRET`, and `NEXTAUTH_SECRET` in `.env.local`
+- Modify the `allowedAdmins` array in `app/api/auth/[...nextauth]/route.ts`
+
 Set up MySQL tables
 ```bash
 -- Create the database

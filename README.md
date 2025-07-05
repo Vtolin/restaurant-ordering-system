@@ -2,7 +2,7 @@
 
 This is a full-stack restaurant ordering system built with **Next.js (App Router)**, **MySQL**, and **Tailwind CSS**. It allows customers to browse a menu, add items to a cart, and place orders — while providing a simple admin panel to manage incoming orders.
 
-> ⚠️ This project is for learning and portfolio purposes — not production-ready yet.
+> ⚠️ This project is for learning and portfolio purposes — almost production-ready.
 
 ---
 
